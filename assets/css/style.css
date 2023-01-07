@@ -1,0 +1,15 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+#conversor-container {
+    width: 350px;
+    height: auto;
+}
+
+
+section{
+    height: 100vh;
+    width: 100vw;
+}
