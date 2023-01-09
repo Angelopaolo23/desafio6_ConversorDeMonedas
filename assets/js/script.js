@@ -65,7 +65,7 @@ async function getIndexData(){
             const euroData = await res.json();
             let euroFilter = euroData["serie"];
             euroFilter = euroFilter.splice(0, 10);
-            return euroData;
+            return euroFilter;
         }
     } catch (e) {
         alert(e.message)
@@ -87,7 +87,7 @@ async function configChart() {
         pricesList.push(priceToPush);
     }
     const title = "Precios de la moneda en los ultimos 10 dias";
-    const lineColor = "red";
+    const lineColor = "white";
     const config = {
         type: chartType,
         data: {
@@ -104,9 +104,9 @@ async function configChart() {
     return config;
 }
 async function renderChart(){
-    const config = configChart();
-    const chartCurrency = document.querySelector("#currency-chart");
-    new Chart(chartCurrency, config)
+    const config = await configChart();
+    const chartCurrency = document.querySelector("#myChart");
+    var myChart= new Chart(chartCurrency, config);
 }
 
 
@@ -115,10 +115,8 @@ btnSearch.addEventListener("click", () => {
         alert("DEBE INDICAR UNA CANTIDAD DE PESOS CHILENOS A CONVERTIR")
     } else {
         currencyConversion()
-        renderChart()
-        configChart()
+        renderChart() 
     } 
 })
-
 
 renderCurrency()
